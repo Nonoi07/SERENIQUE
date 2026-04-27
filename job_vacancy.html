@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ms" id="html-tag" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerjaya | Serenique Enterprise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        serene: {
+                            950: '#020617',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            primary: '#6366f1',
+                            secondary: '#38bdf8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .light .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .bg-pattern {
+            background-image: radial-gradient(#1e293b 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        input[type="file"]::file-selector-button {
+            background-color: #6366f1;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 11px;
+            margin-right: 12px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+        input[type="file"]::file-selector-button:hover {
+            background-color: #4f46e5;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-serene-950 text-slate-900 dark:text-slate-200 bg-pattern">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-serene-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-serene-primary rounded-xl flex items-center justify-center shadow-lg shadow-serene-primary/20">
+                    <i data-lucide="paw-print" class="text-white w-6 h-6"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg leading-none text-slate-900 dark:text-white uppercase tracking-tighter">Serenique</span>
+                    <span class="text-[10px] text-serene-primary font-bold uppercase tracking-widest">Enterprise</span>
+                </div>
+            </a>
+            
+            <div class="flex items-center gap-3">
+                <button onclick="toggleLanguage()" class="text-[10px] font-black px-2 py-1 rounded border border-slate-300 dark:border-slate-700 hover:bg-serene-primary hover:text-white transition uppercase">
+                    <span id="lang-btn">EN</span>
+                </button>
+
+                <button onclick="toggleDarkMode()" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-transparent hover:border-serene-primary/50 transition">
+                    <i id="theme-icon" data-lucide="sun" class="w-4 h-4"></i>
+                </button>
+
+                <button class="hidden md:block bg-serene-primary text-white px-6 py-2 rounded-lg text-sm font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-500/20">
+                    <span data-lang="contact">Hubungi Kami</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative py-24 px-4 overflow-hidden text-center">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-serene-primary/10 to-transparent -z-10"></div>
+        <h1 class="text-5xl md:text-7xl font-black text-slate-900 dark:text-white mb-6 tracking-tight leading-tight">
+            <span data-lang="hero-title">Bina Kerjaya di</span> <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-serene-primary to-serene-secondary">Serenique Enterprise</span>
+        </h1>
+        <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-10 max-w-2xl mx-auto" data-lang="hero-desc">
+            Sertai pusat sehenti penjagaan haiwan paling inovatif. Kami mencari individu yang komited untuk memberikan perkhidmatan bertaraf dunia.
+        </p>
+    </header>
+
+    <!-- Vacancy Listing (Full 5 Jobs) -->
+    <main class="max-w-6xl mx-auto py-10 px-4">
+        <div id="jawatan" class="mb-24">
+            <div class="flex items-center justify-between mb-12 border-l-4 border-serene-primary pl-6">
+                <div>
+                    <h2 class="text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight" data-lang="vacancy-title">Peluang Pekerjaan</h2>
+                    <p class="text-slate-500 text-sm" data-lang="vacancy-subtitle">Terokai 5 jawatan kosong mengikut kepakaran anda</p>
+                </div>
+            </div>
+            
+            <div id="job-list" class="grid gap-6">
+                <!-- Job 1 -->
+                <div class="glass-card rounded-3xl overflow-hidden hover:border-serene-primary/50 transition-all duration-500 group p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="w-16 h-16 bg-serene-primary/10 rounded-2xl flex items-center justify-center shrink-0 border border-serene-primary/20">
+                            <i data-lucide="scissors" class="text-serene-primary w-8 h-8"></i>
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                            <span class="bg-indigo-500/10 text-indigo-500 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-indigo-500/20">Operasi</span>
+                            <h3 class="text-2xl font-black mt-2 mb-2 text-slate-900 dark:text-white group-hover:text-serene-primary transition">Pet Groomer</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm max-w-xl">Menyediakan dandanan estetik dan penjagaan kebersihan profesional untuk kucing dan anjing.</p>
+                        </div>
+                        <div class="md:w-56 flex flex-col items-center md:items-end gap-3 pt-6 md:pt-0">
+                            <p class="text-2xl font-black text-slate-900 dark:text-white tracking-tighter">RM1,800 - 2.5k</p>
+                            <a href="#form-permohonan" class="w-full text-center bg-serene-primary text-white py-3 px-6 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-indigo-700 transition shadow-lg shadow-indigo-500/20">Mohon</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="glass-card rounded-3xl overflow-hidden hover:border-serene-primary/50 transition-all duration-500 group p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="w-16 h-16 bg-serene-primary/10 rounded-2xl flex items-center justify-center shrink-0 border border-serene-primary/20">
+                            <i data-lucide="briefcase" class="text-serene-primary w-8 h-8"></i>
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                            <span class="bg-purple-500/10 text-purple-500 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-purple-500/20">Pengurusan</span>
+                            <h3 class="text-2xl font-black mt-2 mb-2 text-slate-900 dark:text-white group-hover:text-serene-primary transition">Operations Manager</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm max-w-xl">Memantau operasi harian, inventori, dan memastikan kualiti perkhidmatan pelanggan sentiasa di tahap terbaik.</p>
+                        </div>
+                        <div class="md:w-56 flex flex-col items-center md:items-end gap-3 pt-6 md:pt-0">
+                            <p class="text-2xl font-black text-slate-900 dark:text-white tracking-tighter">RM3,500 - 4.8k</p>
+                            <a href="#form-permohonan" class="w-full text-center bg-serene-primary text-white py-3 px-6 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-indigo-700 transition shadow-lg shadow-indigo-500/20">Mohon</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="glass-card rounded-3xl overflow-hidden hover:border-serene-primary/50 transition-all duration-500 group p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="w-16 h-16 bg-serene-primary/10 rounded-2xl flex items-center justify-center shrink-0 border border-serene-primary/20">
+                            <i data-lucide="heart" class="text-serene-primary w-8 h-8"></i>
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                            <span class="bg-pink-500/10 text-pink-500 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-pink-500/20">Penjagaan</span>
+                            <h3 class="text-2xl font-black mt-2 mb-2 text-slate-900 dark:text-white group-hover:text-serene-primary transition">Pet Care Assistant</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm max-w-xl">Bertanggungjawab menjaga kebajikan haiwan di hotel (boarding) dan membantu tugasan am di premis.</p>
+                        </div>
+                        <div class="md:w-56 flex flex-col items-center md:items-end gap-3 pt-6 md:pt-0">
+                            <p class="text-2xl font-black text-slate-900 dark:text-white tracking-tighter">RM1,500 - 1.9k</p>
+                            <a href="#form-permohonan" class="w-full text-center bg-serene-primary text-white py-3 px-6 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-indigo-700 transition shadow-lg shadow-indigo-500/20">Mohon</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 4 -->
+                <div class="glass-card rounded-3xl overflow-hidden hover:border-serene-primary/50 transition-all duration-500 group p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="w-16 h-16 bg-serene-primary/10 rounded-2xl flex items-center justify-center shrink-0 border border-serene-primary/20">
+                            <i data-lucide="video" class="text-serene-primary w-8 h-8"></i>
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                            <span class="bg-orange-500/10 text-orange-500 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-orange-500/20">Pemasaran</span>
+                            <h3 class="text-2xl font-black mt-2 mb-2 text-slate-900 dark:text-white group-hover:text-serene-primary transition">Content Creator</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm max-w-xl">Menghasilkan video kreatif untuk TikTok/Instagram dan menguruskan komuniti media sosial Serenique.</p>
+                        </div>
+                        <div class="md:w-56 flex flex-col items-center md:items-end gap-3 pt-6 md:pt-0">
+                            <p class="text-2xl font-black text-slate-900 dark:text-white tracking-tighter">RM2,200 - 3.0k</p>
+                            <a href="#form-permohonan" class="w-full text-center bg-serene-primary text-white py-3 px-6 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-indigo-700 transition shadow-lg shadow-indigo-500/20">Mohon</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 5 -->
+                <div class="glass-card rounded-3xl overflow-hidden hover:border-serene-primary/50 transition-all duration-500 group p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="w-16 h-16 bg-serene-primary/10 rounded-2xl flex items-center justify-center shrink-0 border border-serene-primary/20">
+                            <i data-lucide="layout" class="text-serene-primary w-8 h-8"></i>
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                            <span class="bg-emerald-500/10 text-emerald-500 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-emerald-500/20">Pentadbiran</span>
+                            <h3 class="text-2xl font-black mt-2 mb-2 text-slate-900 dark:text-white group-hover:text-serene-primary transition">Admin & HR Executive</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm max-w-xl">Menguruskan dokumentasi syarikat, pendaftaran pelanggan, dan hal ehwal sumber manusia kakitangan.</p>
+                        </div>
+                        <div class="md:w-56 flex flex-col items-center md:items-end gap-3 pt-6 md:pt-0">
+                            <p class="text-2xl font-black text-slate-900 dark:text-white tracking-tighter">RM2,500 - 3.5k</p>
+                            <a href="#form-permohonan" class="w-full text-center bg-serene-primary text-white py-3 px-6 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-indigo-700 transition shadow-lg shadow-indigo-500/20">Mohon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ENHANCED FORM SECTION (DETAILED) -->
+        <div id="form-permohonan" class="max-w-5xl mx-auto glass-card rounded-[40px] shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+            <div class="bg-serene-primary p-12 text-white relative overflow-hidden">
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div>
+                        <h2 class="text-4xl font-black uppercase tracking-tighter mb-2" data-lang="form-title">Permohonan Digital Premium</h2>
+                        <p class="font-bold opacity-80" data-lang="form-subtitle">Lengkapkan maklumat anda dengan teliti untuk diproses oleh HR.</p>
+                    </div>
+                    <div class="hidden md:block shrink-0">
+                        <i data-lucide="file-check-2" class="w-16 h-16 opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+
+            <form id="jobAppForm" class="p-8 md:p-14 space-y-12">
+                
+                <!-- Section 1: Profil Peribadi -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-serene-primary/20 flex items-center justify-center">
+                            <span class="text-serene-primary font-black text-xs">01</span>
+                        </div>
+                        <h4 class="text-slate-900 dark:text-white font-black uppercase tracking-widest text-sm" data-lang="sec1">Profil Peribadi & Hubungan</h4>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="col-span-2 md:col-span-1">
+                            <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Nama Penuh (seperti IC)</label>
+                            <input type="text" required class="w-full bg-slate-100 dark:bg-serene-800 border-none text-slate-900 dark:text-white px-5 py-4 rounded-2xl focus:ring-4 focus:ring-serene-primary/20 outline-none transition">
+                        </div>
+                        <div class="col-span-2 md:col-span-1">
+                            <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">No. Kad Pengenalan</label>
+                            <input type="text" placeholder="XXXXXX-XX-XXXX" required class="w-full bg-slate-100 dark:bg-serene-800 border-none text-slate-900 dark:text-white px-5 py-4 rounded-2xl focus:ring-4 focus:ring-serene-primary/20 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">E-mel Rasmi</label>
+                            <input type="email" required class="w-full bg-slate-100 dark:bg-serene-800 border-none text-slate-900 dark:text-white px-5 py-4 rounded-2xl focus:ring-4 focus:ring-serene-primary/20 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">No. Telefon / WhatsApp</label>
+                            <input type="tel" required class="w-full bg-slate-100 dark:bg-serene-800 border-none text-slate-900 dark:text-white px-5 py-4 rounded-2xl focus:ring-4 focus:ring-serene-primary/20 outline-none transition">
+                        </div>
+                        <div class="col-span-2">
+                            <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Alamat Surat-Menyurat</label>
+                            <textarea rows="2" class="w-full bg-slate-100 dark:bg-serene-800 border-none text-slate-900 dark:text-white px-5 py-4 rounded-2xl focus:ring-4 focus:ring-serene-primary/20 outline-none transition"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Kelayakan -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-serene-primary/20 flex items-center justify-center">
+                            <span class="text-serene-primary font-black text-xs">02</span>
+                        </div>
+                        <h4 class="text-slate-900 dark:text-white font-black uppercase tracking-widest text-sm" data-lang="sec2">Kelayakan & Jawatan</h4>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Jawatan Yang Dimohon</label>
+                            <select class="w-full bg-slate-100 dark:bg-serene-800 border-none text-slate-900 dark:text-white px-5 py-4 rounded-2xl focus:ring-4 focus:ring-serene-primary/20 outline-none transition">
+                                <option>Pet Groomer</option>
+                                <option>Operations Manager</option>
+                                <option>Pet Care Assistant</option>
+                                <option>Content Creator</option>
+                                <option>Admin & HR</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Tahap Pendidikan Tertinggi</label>
+                            <select class="w-full bg-slate-100 dark:bg-serene-800 border-none text-slate-900 dark:text-white px-5 py-4 rounded-2xl focus:ring-4 focus:ring-serene-primary/20 outline-none transition">
+                                <option>Diploma / Sijil</option>
+                                <option>Ijazah Sarjana Muda</option>
+                                <option>Ijazah Sarjana (Master)</option>
+                                <option>SPM / STPM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-4">Pengalaman Kerja Berkaitan</label>
+                        <div class="flex flex-wrap gap-4">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="exp" class="hidden peer">
+                                <div class="px-6 py-3 rounded-xl bg-slate-100 dark:bg-serene-800 peer-checked:bg-serene-primary peer-checked:text-white transition font-bold text-xs uppercase tracking-widest">Tiada</div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="exp" class="hidden peer">
+                                <div class="px-6 py-3 rounded-xl bg-slate-100 dark:bg-serene-800 peer-checked:bg-serene-primary peer-checked:text-white transition font-bold text-xs uppercase tracking-widest">1 - 2 Tahun</div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="exp" class="hidden peer" checked>
+                                <div class="px-6 py-3 rounded-xl bg-slate-100 dark:bg-serene-800 peer-checked:bg-serene-primary peer-checked:text-white transition font-bold text-xs uppercase tracking-widest">3+ Tahun</div>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Kenapa anda ingin sertai Serenique?</label>
+                        <textarea rows="3" placeholder="Ceritakan serba sedikit minat anda terhadap haiwan..." class="w-full bg-slate-100 dark:bg-serene-800 border-none text-slate-900 dark:text-white px-5 py-4 rounded-2xl focus:ring-4 focus:ring-serene-primary/20 outline-none transition"></textarea>
+                    </div>
+                </div>
+
+                <!-- Section 3: Lampiran -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-serene-primary/20 flex items-center justify-center">
+                            <span class="text-serene-primary font-black text-xs">03</span>
+                        </div>
+                        <h4 class="text-slate-900 dark:text-white font-black uppercase tracking-widest text-sm" data-lang="sec3">Lampiran Dokumentasi</h4>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="p-8 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-3xl text-center group hover:border-serene-primary transition">
+                            <i data-lucide="file-up" class="w-10 h-10 mx-auto mb-4 text-slate-400 group-hover:text-serene-primary transition"></i>
+                            <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-3">Muat Naik Resume (PDF sahaja)</label>
+                            <input type="file" accept=".pdf" class="text-[10px] text-slate-500">
+                        </div>
+                        <div class="p-8 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-3xl text-center group hover:border-serene-primary transition">
+                            <i data-lucide="image" class="w-10 h-10 mx-auto mb-4 text-slate-400 group-hover:text-serene-primary transition"></i>
+                            <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-3">Gambar Profil Terkini</label>
+                            <input type="file" accept="image/*" class="text-[10px] text-slate-500">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6">
+                    <button type="submit" class="w-full bg-serene-primary text-white py-6 rounded-2xl font-black text-xl hover:bg-indigo-700 transition uppercase tracking-[0.2em] shadow-2xl shadow-indigo-500/30">
+                        Hantar Profil Ke HR
+                    </button>
+                    <p class="text-center text-[10px] text-slate-500 mt-6 uppercase tracking-widest">Dengan menekan butang di atas, anda bersetuju untuk pihak Serenique memproses data peribadi anda.</p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 py-16 px-4 mt-24 text-center">
+        <div class="max-w-6xl mx-auto">
+            <p class="text-slate-500 text-sm font-bold tracking-widest uppercase mb-4" data-lang="footer-text">Serenique Enterprise - Professional Pet Care Center</p>
+            <div class="flex justify-center gap-8 mb-8 text-slate-400">
+                <i data-lucide="instagram" class="w-5 h-5 hover:text-serene-primary cursor-pointer"></i>
+                <i data-lucide="facebook" class="w-5 h-5 hover:text-serene-primary cursor-pointer"></i>
+                <i data-lucide="twitter" class="w-5 h-5 hover:text-serene-primary cursor-pointer"></i>
+            </div>
+            <p class="text-slate-400 text-[10px] uppercase tracking-widest">© 2025 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        function toggleDarkMode() {
+            const html = document.getElementById('html-tag');
+            const icon = document.getElementById('theme-icon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                icon.setAttribute('data-lucide', 'moon');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                icon.setAttribute('data-lucide', 'sun');
+            }
+            lucide.createIcons();
+        }
+
+        let currentLang = 'ms';
+        const translations = {
+            ms: {
+                "contact": "Hubungi Kami",
+                "hero-title": "Bina Kerjaya di",
+                "hero-desc": "Sertai pusat sehenti penjagaan haiwan paling inovatif. Kami mencari individu yang komited untuk memberikan perkhidmatan bertaraf dunia.",
+                "vacancy-title": "Peluang Pekerjaan",
+                "vacancy-subtitle": "Terokai 5 jawatan kosong mengikut kepakaran anda",
+                "form-title": "Permohonan Digital Premium",
+                "form-subtitle": "Lengkapkan maklumat anda dengan teliti untuk diproses oleh HR.",
+                "sec1": "Profil Peribadi & Hubungan",
+                "sec2": "Kelayakan & Jawatan",
+                "sec3": "Lampiran Dokumentasi",
+                "footer-text": "Serenique Enterprise - Pusat Penjagaan Haiwan Profesional"
+            },
+            en: {
+                "contact": "Contact Us",
+                "hero-title": "Build Your Career at",
+                "hero-desc": "Join the most innovative one-stop pet care center. We are looking for individuals committed to world-class service.",
+                "vacancy-title": "Job Vacancies",
+                "vacancy-subtitle": "Explore 5 job openings based on your expertise",
+                "form-title": "Premium Digital Application",
+                "form-subtitle": "Complete your details carefully for HR processing.",
+                "sec1": "Personal Profile & Contact",
+                "sec2": "Qualifications & Position",
+                "sec3": "Documentation Attachments",
+                "footer-text": "Serenique Enterprise - Professional Pet Care Center"
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ms' ? 'en' : 'ms';
+            document.getElementById('lang-btn').innerText = currentLang === 'ms' ? 'EN' : 'MS';
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (translations[currentLang][key]) el.innerText = translations[currentLang][key];
+            });
+        }
+
+        document.getElementById('jobAppForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const msg = currentLang === 'ms' ? 'Terima kasih! Profil lengkap anda telah selamat dihantar ke sistem HR Serenique.' : 'Thank you! Your complete profile has been safely sent to the Serenique HR system.';
+            alert(msg);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
